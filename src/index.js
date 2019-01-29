@@ -118,7 +118,15 @@ export default class App extends Component {
           <Heading>
             Naming
           </Heading>
-          
+
+        </Slide>
+        <Slide>
+          <Heading>Example</Heading>
+          <Code>
+            {`function() {
+              
+            }`}
+          </Code>
         </Slide>
         <Slide>
           <Heading>Maintainable Code</Heading>
