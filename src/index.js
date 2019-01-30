@@ -163,7 +163,9 @@ export default class App extends Component {
             </ListItem>
           </List>
         </Slide>
-        <Slide></Slide>
+        <Slide>
+          
+        </Slide>
         {/* "If you go after easy, you usually end up with complex, but if you go after simple you can also achieve easy." - Kyle Simpson */}
 
       </Deck>
