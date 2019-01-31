@@ -25,7 +25,7 @@ import Code from "./Code.js";
 import createTheme from "spectacle-theme-nova";
 const theme = createTheme();
 import "spectacle-theme-nova/syntax/prism-javascript";
-
+import CodeVennDiagram from './CodeVennDiagram';
 import timeVProductivity from "./img/productivity-vs-time.png";
 
 export default class App extends Component {
@@ -78,7 +78,7 @@ export default class App extends Component {
         </Slide>
 
         <Slide>
-          <Heading>Clean Code</Heading>
+          <Heading>1) Clean Code</Heading>
         </Slide>
         <Slide>
           <Heading>What is clean code?</Heading>
@@ -102,6 +102,7 @@ export default class App extends Component {
         </Slide>
         <Slide>
           <Code
+            width="200px"
             code={`if ( a % 2 === 0 ) {
   // ...
 }
@@ -114,6 +115,8 @@ if ( a % 2 === 1 ) {
         </Slide>
         <Slide>
           <Code
+                      width="300px"
+
             code={`let isEven = a % 2 === 0;
 if ( isEven ) {
   // ...
@@ -137,10 +140,9 @@ switch
           <Heading>Conventions</Heading>
           <List>
             <ListItem>
-              functions start with verbs (setState, createElement)
+              functions and booleans should start with verbs (setState, createElement, isEven)
             </ListItem>
-            <ListItem>predicates start with "does", "is", or "has"</ListItem>
-            <ListItem>values are nouns</ListItem>
+            <ListItem>values should be nouns</ListItem>
           </List>
         </Slide>
         <Slide>
@@ -292,7 +294,7 @@ function complexStuff( a, b, c, d ) {
   return z;
 }
 `
-          } width="800px" />
+          } width="450px" />
         </Slide>
         <Slide>
           <Code code={
@@ -305,7 +307,7 @@ function complexStuff( a, b, c, d ) {
   return z;
 }
 ` } 
-width="1000px" />
+width="800px" />
         </Slide>
         <Slide>
           <Heading>
@@ -355,7 +357,7 @@ width="1000px" />
     </Text>
         </Slide>
         <Slide>
-          <Heading>Maintainable Code</Heading>
+          <Heading>2) Maintainable Code</Heading>
         </Slide>
         <Slide>
           <Heading>What is maintainable code?</Heading>
@@ -366,43 +368,48 @@ width="1000px" />
           </List>
         </Slide>
         <Slide>
+          <Text>
+            A coder spends 80% of his/her time maintaining code
+          </Text>
+        </Slide>
+        <Slide>
           <Text>Maintainable code is achieved through code design</Text>
         </Slide>
         <Slide>
           <Heading>Designing code</Heading>
           <List>
-            <ListItem>Avoiding footguns</ListItem>
-            <ListItem>Making correct assumptions about how your code will be used / how it will change</ListItem>
+            <ListItem>Follow best practices (Avoid footguns)</ListItem>
+            <ListItem>Architecture</ListItem>
           </List>
         </Slide>
         <Slide>
           <Heading>
-            Footguns
+            Best practices
           </Heading>
           <List>
             <ListItem>
               many are specific to the language ( ex. avoid object type checking in javascript )
             </ListItem>
             <ListItem>
-              some apply to all languages ( ex. avoid globals )
+              some apply to all languages ( ex. separation of concerns )
             </ListItem>
           </List>
         </Slide>
         <Slide>
           <Heading>
-            Make correct assumptions about how your code will be used / how it will change
+             Architecture 
           </Heading>
-          <List>
-            <ListItem>
-              smaller abstractions
-            </ListItem>
-            <ListItem>
-              encapsulation
-            </ListItem>
-          </List>
         </Slide>
         <Slide>
-
+          <CodeVennDiagram count={2} />
+        </Slide>
+        <Slide>
+          <Heading>
+            3) Bug and Error free code
+          </Heading>
+        </Slide>
+        <Slide>
+          
         </Slide>
       </Deck>
     );

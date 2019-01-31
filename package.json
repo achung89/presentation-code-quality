@@ -13,7 +13,7 @@
     "melodrama": "^1.2.4",
     "prismjs": "1.6.0",
     "react": "16.8.0-alpha.1",
-    "react-dom": "^16.7.0",
+    "react-dom": "^16.8.0-alpha.1",
     "spectacle": "^5.4.0",
     "spectacle-theme-nova": "^1.4.1"
   },
