@@ -6,16 +6,16 @@
   "author": "Andrew Chung <chung.andrew7@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
-    "react": "^16.7.0",
+    "melodrama": "^1.2.4",
+    "prismjs": "1.6.0",
+    "react": "16.8.0-alpha.1",
     "react-dom": "^16.7.0",
     "spectacle": "^5.4.0",
     "spectacle-theme-nova": "^1.4.1"
   },
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1"
-  }
+  "devDependencies": {}
 }
