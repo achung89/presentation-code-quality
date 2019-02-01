@@ -380,6 +380,7 @@ width="800px" />
           <List>
             <ListItem>Follow best practices (Avoid footguns)</ListItem>
             <ListItem>Architecture</ListItem>
+            <ListItem>Tools</ListItem>
           </List>
         </Slide>
         <Slide>
@@ -401,15 +402,105 @@ width="800px" />
           </Heading>
         </Slide>
         <Slide>
+          <Heading>
+            Tools
+          </Heading>
+          <List>
+          <ListItem>
+            Debugging (chrome dev tools)
+          </ListItem>
+          <ListItem>
+            Tests
+          </ListItem>
+          <ListItem>
+            Types
+          </ListItem>
+          </List>
+        </Slide>
+        <Slide>
           <CodeVennDiagram count={2} />
         </Slide>
         <Slide>
           <Heading>
-            3) Bug and Error free code
+            3) Bug free and Error free code
           </Heading>
         </Slide>
         <Slide>
-          
+          <List>
+            <ListItem>
+              Ensure the code works well
+            </ListItem>
+            <ListItem>
+              Accomodate edge cases
+            </ListItem>
+          </List>
+        </Slide>
+        <Slide>
+          <Code code={
+`function pickMax(integers) {
+  return Math.max(...integers);
+}
+`} />
+        </Slide>
+        <Slide>
+        <Code code={
+`function pickMax(integers) {
+  return Math.max(...integers);
+};
+pickMax([]) // -Infinity
+`} />
+        </Slide>
+        <Slide>
+          <Code code={
+`function pickMax(integers) {
+  if (integers.length === 0) {
+    return NaN;
+  }
+  return Math.max(...integers);
+}
+`} />
+        </Slide>
+        <Slide>
+          <CodeVennDiagram count={3} />
+        </Slide>
+        <Slide>
+          <Heading>4) Security</Heading>
+        </Slide>
+        <Slide>
+          <List>
+            <ListItem>Minimize bugs</ListItem>
+            <ListItem>Follow Best Practices</ListItem>
+            <ListItem>Lean on big tech</ListItem>
+          </List>
+        </Slide>
+        <Slide>
+          <CodeVennDiagram count={4}/>
+        </Slide>
+        <Slide>
+          <Heading>
+            5) Performant Code
+          </Heading>
+        </Slide>
+        <Slide>
+          <Text>
+            Time Complexity
+          </Text>
+        </Slide>
+        <Slide>
+          <Text>
+            Write to the compiler
+          </Text>
+        </Slide>
+        <Slide>
+          <CodeVennDiagram count={5} />
+        </Slide>
+        <Slide>
+          <Text>
+            Prefer readability over performance
+          </Text>
+        </Slide>
+        <Slide>
+          <Heading>The End</Heading>
         </Slide>
       </Deck>
     );
