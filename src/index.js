@@ -25,7 +25,7 @@ import Code from "./Code.js";
 import createTheme from "spectacle-theme-nova";
 const theme = createTheme();
 import "spectacle-theme-nova/syntax/prism-javascript";
-import CodeVennDiagram from './CodeVennDiagram';
+import CodeVennDiagram from "./CodeVennDiagram";
 import timeVProductivity from "./img/productivity-vs-time.png";
 
 export default class App extends Component {
@@ -115,8 +115,7 @@ if ( a % 2 === 1 ) {
         </Slide>
         <Slide>
           <Code
-                      width="300px"
-
+            width="300px"
             code={`let isEven = a % 2 === 0;
 if ( isEven ) {
   // ...
@@ -140,7 +139,8 @@ switch
           <Heading>Conventions</Heading>
           <List>
             <ListItem>
-              functions and booleans should start with verbs (setState, createElement, isEven)
+              functions and booleans should start with verbs (setState,
+              createElement, isEven)
             </ListItem>
             <ListItem>values should be nouns</ListItem>
           </List>
@@ -148,9 +148,9 @@ switch
         <Slide>
           <Heading>Conventions</Heading>
           <List>
-            <ListItem>Arrays are plural ("fruits", "states", "words")</ListItem>
+            <ListItem>Arrays should be plural ("fruits", "states", "words")</ListItem>
             <ListItem>
-              Avoid putting data type in name ("data" instead of "dataObj")
+              data type shouldn't be in name ("person" instead of "personObj")
             </ListItem>
           </List>
         </Slide>
@@ -160,6 +160,7 @@ switch
             <ListItem>Prefer explicit over implicit</ListItem>
             <Code
               code={`
+// implicit
 function (arr) {
   let data = arr.map( entry => entry.name);
   // ...
@@ -168,7 +169,8 @@ function (arr) {
 `}
             />
             <Code
-              code={`function (people) {
+              code={`//expicit
+function (people) {
   let names = people.map( person => person.name);
   // ...
 }
@@ -188,78 +190,70 @@ function (arr) {
         <Slide>
           <Code
             code={`
-let name = "Justin";
-let age = 29;
-let location;
+function main() {
+  let name = "Justin";
+  let age = 29;
+  let location;
 
-if (age < 20) {
-  location = "twitter";
-}
+  if (age < 20) {
+    location = "twitter";
+  }
 
-if (age >= 20 ) {
-  location = "facebook";
-}
+  if (age >= 20 ) {
+    location = "facebook";
+  }
 
-switch ( location ) {
-  case: 'twitter':
-    axios.post( 
-      "https://twitter.com"
-      , { name }
-      , { headers: { 'auth': "twitter:login"} }
-    );
-  break;
-  case: 'facebook':
-    axiox.post(
-      "https://facebook.com"
-      , { name } 
-      , { headers: { 'auth': "facebook:login"}}
-    )
-  break;
+  switch ( location ) {
+    case: 'twitter':
+      axios.post( 
+        "https://twitter.com"
+        , { name }
+        , { headers: { 'auth': "twitter:login"} }
+      );
+    break;
+    case: 'facebook':
+      axiox.post(
+        "https://facebook.com"
+        , { name } 
+        , { headers: { 'auth': "facebook:login"}}
+      )
+    break;
+  }
 }
+main();
 `}
           />
         </Slide>
 
         <Slide>
           <Code
-            code={`// __helpers__
+            width="700px"
+            code={`import { sendToTwitter, sendToFacebook } from './api-helpers';
+
 function getEndpoint( age ) {
   if ( age < 20 ) {
     return "twitter";
   }
-
   if ( age >= 20 ) {
     return "facebook";
   }
 }
-function sendToTwitter( name ) {
-  axios.post( 
-    "https://twitter.com"
-    , { name }
-    , { headers: { 'auth': "twitter:login"} }
-  );
-}
-function sendToFacebook( name ) {
-  axiox.post(
-    "https://facebook.com"
-    , { name } 
-    , { headers: { 'auth': "facebook:login"}}
-  )
-}
 
-// __main__
-let name = "Justin";
-let age = 29;
-let location = getEndpoint( age );
+function main() {
+  let name = "Justin";
+  let age = 29;
+  let location = getEndpoint( age );
 
-switch ( location ) {
-  case: 'twitter':
-    sendToTwitter( name );
-  break;
-  case: 'facebook':
-    sendToFacebook( name );
-  break;
+  switch ( location ) {
+    case: 'twitter':
+      sendToTwitter( name );
+    break;
+    case: 'facebook':
+      sendToFacebook( name );
+    break;
+  }
 }
+main()
 `}
           />
         </Slide>
@@ -270,35 +264,33 @@ switch ( location ) {
           <Heading>DRY (Don't repeat yourself)</Heading>
         </Slide>
         <Slide>
-          <Code code={
-`
+          <Code
+            width="800px"
+            code={`
 function complexStuff( a, b, c, d ) {
   const x = Math.sqrt( Math.pow( a, 2 ) + Math.pow( b, 2 ) );
   const y = Math.sqrt( Math.pow( c, 2 ) + Math.pow( d, 2 ) );
   const z = Math.sqrt( Math.pow( x, 2 ) + Math.pow( y, 2 ) );
   return z;
 }
-`
-          } />
+`}
+          />
         </Slide>
         <Slide>
-          <Code code={
-`function complexStuff( a, b, c, d ) {
-  const pythagorean = ( a, b ) => Math.sqrt( 
-    Math.pow( a, 2 )
-    , Math.pow( b, 2 ) 
-  )
+          <Code
+            width="1000px"
+            code={`function complexStuff( a, b, c, d ) {
+  const pythagorean = ( a, b ) => Math.sqrt( Math.pow( a, 2 ), Math.pow( b, 2 ) )
   const x = pythagorean( a, b );
   const y = pythagorean( c, d );
   const z = pythgorean( x, y );
   return z;
 }
-`
-          } width="450px" />
+`}/>
         </Slide>
         <Slide>
-          <Code code={
-`function complexStuff( a, b, c, d ) {
+          <Code
+            code={`function complexStuff( a, b, c, d ) {
   const square = a => Math.pow( a, 2 );
   const pythagorean = ( a, b ) => Math.sqrt( square( a ), square( b ) )
   const x = pythagorean( a, b );
@@ -306,16 +298,17 @@ function complexStuff( a, b, c, d ) {
   const z = pythgorean( x, y );
   return z;
 }
-` } 
-width="800px" />
+`}
+            width="800px"
+          />
         </Slide>
         <Slide>
-          <Heading>
-            KISS (Keep it stupid simple)
-          </Heading>
+          <Heading>KISS (Keep it stupid simple)</Heading>
         </Slide>
         <Slide>
-          <Code code={`fs.readdir(source, function (err, files) {
+          <Code
+            width="1100px"
+            code={`fs.readdir(source, function (err, files) {
   if (err) {
     console.log('Error finding files: ' + err)
   } else {
@@ -338,11 +331,16 @@ width="800px" />
       })
     })
   }
-})`} /> <Text style={{fontSize: '12px'}}>
-  source: https://dev.to/nijeesh4all/kiss-the-java-script-298
-  </Text></Slide>
+})`}
+          />{" "}
+          <Text style={{ fontSize: "12px" }}>
+            source: https://dev.to/nijeesh4all/kiss-the-java-script-298
+          </Text>
+        </Slide>
         <Slide>
-          <Code width={'300px'} code={`awesome_function()
+          <Code
+            width={"300px"}
+            code={`awesome_function()
   .then(do_this)
   .then(do_this_too)
   .then(here_is_one_more)
@@ -351,10 +349,11 @@ width="800px" />
     
     
     
-    `} />
-    <Text style={{fontSize: '12px'}}>
-      https://dev.to/nijeesh4all/kiss-the-java-script-298
-    </Text>
+    `}
+          />
+          <Text style={{ fontSize: "12px" }}>
+            https://dev.to/nijeesh4all/kiss-the-java-script-298
+          </Text>
         </Slide>
         <Slide>
           <Heading>2) Maintainable Code</Heading>
@@ -368,28 +367,25 @@ width="800px" />
           </List>
         </Slide>
         <Slide>
-          <Text>
-            A coder spends 80% of his/her time maintaining code
-          </Text>
+          <Text>An average programmer maintains code 80% of the time</Text>
         </Slide>
         <Slide>
           <Text>Maintainable code is achieved through code design</Text>
         </Slide>
         <Slide>
-          <Heading>Designing code</Heading>
+          <Heading>Creating maintainable code</Heading>
           <List>
             <ListItem>Follow best practices (Avoid footguns)</ListItem>
             <ListItem>Architecture</ListItem>
-            <ListItem>Tools</ListItem>
+            <ListItem>Use tools</ListItem>
           </List>
         </Slide>
         <Slide>
-          <Heading>
-            Best practices
-          </Heading>
+          <Heading>Best practices</Heading>
           <List>
             <ListItem>
-              many are specific to the language ( ex. avoid object type checking in javascript )
+              many are specific to the language ( ex. avoid object type checking
+              in javascript )
             </ListItem>
             <ListItem>
               some apply to all languages ( ex. separation of concerns )
@@ -397,68 +393,61 @@ width="800px" />
           </List>
         </Slide>
         <Slide>
-          <Heading>
-             Architecture 
-          </Heading>
+          <img src={require("./img/good-parts.jpg")} />
         </Slide>
         <Slide>
-          <Heading>
-            Tools
-          </Heading>
+          <Heading>Architecture</Heading>
+        </Slide>
+        <Slide>
+          <Heading>Tools</Heading>
           <List>
-          <ListItem>
-            Debugging (chrome dev tools)
-          </ListItem>
-          <ListItem>
-            Tests
-          </ListItem>
-          <ListItem>
-            Types
-          </ListItem>
+            <ListItem>Debugging (chrome dev tools)</ListItem>
+            <ListItem>Tests</ListItem>
+            <ListItem>Types</ListItem>
           </List>
         </Slide>
         <Slide>
           <CodeVennDiagram count={2} />
         </Slide>
         <Slide>
-          <Heading>
-            3) Bug free and Error free code
-          </Heading>
+          <Heading>3) Bug free and Error free code</Heading>
         </Slide>
         <Slide>
+          <Heading>Avoiding bugs</Heading>
           <List>
-            <ListItem>
-              Ensure the code works well
-            </ListItem>
-            <ListItem>
-              Accomodate edge cases
-            </ListItem>
+            <ListItem>Test the code</ListItem>
+            <ListItem>Cover edge cases</ListItem>
           </List>
         </Slide>
         <Slide>
-          <Code code={
-`function pickMax(integers) {
+          <Heading>Cover edge cases</Heading>
+          <Code
+            code={`function pickMax(integers) {
   return Math.max(...integers);
 }
-`} />
+`}
+          />
         </Slide>
         <Slide>
-        <Code code={
-`function pickMax(integers) {
+          <Heading>Cover edge cases</Heading>
+          <Code
+            code={`function pickMax(integers) {
   return Math.max(...integers);
 };
 pickMax([]) // -Infinity
-`} />
+`}
+          />
         </Slide>
         <Slide>
-          <Code code={
-`function pickMax(integers) {
+          <Code
+            code={`function pickMax(integers) {
   if (integers.length === 0) {
     return NaN;
   }
   return Math.max(...integers);
 }
-`} />
+`}
+          />
         </Slide>
         <Slide>
           <CodeVennDiagram count={3} />
@@ -470,34 +459,27 @@ pickMax([]) // -Infinity
           <List>
             <ListItem>Minimize bugs</ListItem>
             <ListItem>Follow Best Practices</ListItem>
-            <ListItem>Lean on big tech</ListItem>
+            <ListItem>Lean on the runtime environment</ListItem>
           </List>
         </Slide>
         <Slide>
-          <CodeVennDiagram count={4}/>
+          <CodeVennDiagram count={4} />
         </Slide>
         <Slide>
-          <Heading>
-            5) Performant Code
-          </Heading>
+          <Heading>5) Performant Code</Heading>
         </Slide>
         <Slide>
-          <Text>
-            Time Complexity
-          </Text>
-        </Slide>
-        <Slide>
-          <Text>
-            Write to the compiler
-          </Text>
+          <Heading>How to make performant code?</Heading>
+          <List>
+            <ListItem> Time Complexity (Big O Notation)</ListItem>
+            <ListItem> Write to the compiler and to the runtime</ListItem>
+          </List>
         </Slide>
         <Slide>
           <CodeVennDiagram count={5} />
         </Slide>
         <Slide>
-          <Text>
-            Prefer readability over performance
-          </Text>
+          <Text>Prefer readability and maintainablity over performance</Text>
         </Slide>
         <Slide>
           <Heading>The End</Heading>
