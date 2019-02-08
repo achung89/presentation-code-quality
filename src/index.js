@@ -102,7 +102,7 @@ export default class App extends Component {
         </Slide>
         <Slide>
           <Code
-            width="200px"
+            width="300px"
             code={`if ( a % 2 === 0 ) {
   // ...
 }
@@ -128,34 +128,28 @@ if ( isOdd ) {
 `}
           />
         </Slide>
-        {/* <Slide>
-        <code style={{display:'block', textAlign:'left', width:'400px', margin:'auto', whiteSpace:'pre-wrap'}}
-           dangerouslySetInnerHTML={{__html: Prism.highlight(
-`
-switch 
-`, Prism.languages.javascript, 'javascript')}} />
-        </Slide> */}
+
         <Slide>
-          <Heading>Conventions</Heading>
+          <Heading>Tips</Heading>
           <List>
             <ListItem>
-              functions and booleans should start with verbs (setState,
+              start functions and booleans with verbs (setState,
               createElement, isEven)
             </ListItem>
             <ListItem>values should be nouns</ListItem>
           </List>
         </Slide>
         <Slide>
-          <Heading>Conventions</Heading>
+          <Heading>Tips</Heading>
           <List>
-            <ListItem>Arrays should be plural ("fruits", "states", "words")</ListItem>
+            <ListItem>Make arrays plural ("fruits", "states", "words")</ListItem>
             <ListItem>
-              data type shouldn't be in name ("person" instead of "personObj")
+              data type shouldn't have to be in name ("person" instead of "personList")
             </ListItem>
           </List>
         </Slide>
         <Slide>
-          <Heading>Conventions</Heading>
+          <Heading>Tips</Heading>
           <List>
             <ListItem>Prefer explicit over implicit</ListItem>
             <Code
@@ -261,7 +255,7 @@ main()
           <Heading>Avoid making many many small functions</Heading>
         </Slide>
         <Slide>
-          <Heading>DRY (Don't repeat yourself)</Heading>
+          <Heading>DRY Principle(Don't repeat yourself)</Heading>
         </Slide>
         <Slide>
           <Code
@@ -303,7 +297,7 @@ function complexStuff( a, b, c, d ) {
           />
         </Slide>
         <Slide>
-          <Heading>KISS (Keep it stupid simple)</Heading>
+          <Heading>KISS principle (Keep it stupid simple)</Heading>
         </Slide>
         <Slide>
           <Code
@@ -375,20 +369,21 @@ function complexStuff( a, b, c, d ) {
         <Slide>
           <Heading>Creating maintainable code</Heading>
           <List>
-            <ListItem>Follow best practices (Avoid footguns)</ListItem>
+            <ListItem>Following best practices (Avoid footguns)</ListItem>
             <ListItem>Architecture</ListItem>
             <ListItem>Use tools</ListItem>
+            <ListItem>Tests</ListItem>
           </List>
         </Slide>
         <Slide>
           <Heading>Best practices</Heading>
           <List>
             <ListItem>
-              many are specific to the language ( ex. avoid object type checking
+              Use best practices specific to the language ( ex. avoid object type checking
               in javascript )
             </ListItem>
             <ListItem>
-              some apply to all languages ( ex. separation of concerns )
+              Use best practice that apply to all languages ( ex. separation of concerns )
             </ListItem>
           </List>
         </Slide>
@@ -402,9 +397,11 @@ function complexStuff( a, b, c, d ) {
           <Heading>Tools</Heading>
           <List>
             <ListItem>Debugging (chrome dev tools)</ListItem>
-            <ListItem>Tests</ListItem>
             <ListItem>Types</ListItem>
           </List>
+        </Slide>
+        <Slide>
+          <Heading>Tests</Heading>
         </Slide>
         <Slide>
           <CodeVennDiagram count={2} />
